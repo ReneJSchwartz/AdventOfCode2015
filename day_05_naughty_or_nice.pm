@@ -20,10 +20,10 @@ for (split(/\n/, $santas_text_file))
   next if scalar(@vowels) < 3;
   
   my @double_letter = $_ =~ /(\w)\1/g;
-  next if scalar(@double_letter) < 1;
+  next unless scalar(@double_letter);
   
-  my @forbidden_combinations = $_ =~ /ab|cd|xy|pq/g;
-  next if scalar(@forbidden_combinations) > 0;
+  # forbidden combinations
+  next if $_ =~ /ab|cd|xy|pq/g;
   
   $nice_strings++;
 }
@@ -45,10 +45,10 @@ $nice_strings = 0;
 for (split(/\n/, $santas_text_file))
 {
   my @triplet = $_ =~ /(\w).\1/g;
-  next if scalar(!@triplet);
+  next unless scalar(@triplet);
   
   my @pair = $_ =~ /(\w{2})(?=.*\1)/g;
-  next if scalar(!@pair);
+  next unless scalar(@pair);
   
   $nice_strings++;
 }
