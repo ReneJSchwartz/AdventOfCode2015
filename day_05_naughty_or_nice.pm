@@ -28,4 +28,29 @@ for (split(/\n/, $santas_text_file))
   $nice_strings++;
 }
 
-print "Nice strings found: $nice_strings";
+say "Nice strings found p1: $nice_strings";
+
+# Part 2
+# Out with the old rules, obviously nice strings are those that:
+# have a pair of non-overlapping double letters like xyfillerxy, and
+# have a double letter with 1 letter in between it like efe, xyx, aaa.
+
+#$santas_text_file = "qjhvhtzxzqqjkmpb
+#xxyxx
+#uurcxstgmygtbstg
+#ieodomkazucvgmuy";
+
+$nice_strings = 0;
+
+for (split(/\n/, $santas_text_file))
+{
+  my @triplet = $_ =~ /(\w).\1/g;
+  next if scalar(!@triplet);
+  
+  my @pair = $_ =~ /(\w{2})(?=.*\1)/g;
+  next if scalar(!@pair);
+  
+  $nice_strings++;
+}
+
+say "Nice strings found p2: $nice_strings";
