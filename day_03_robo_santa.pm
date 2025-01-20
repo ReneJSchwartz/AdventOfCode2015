@@ -3,8 +3,8 @@ use feature "switch";
 
 # Day 3: Perfectly Spherical Houses in a Vacuum
 # Part 1
-# Counts how many houses receive over 1 gift which happens
-# if santa visits the house in the infinite 2D grid more than 1 time.
+# Counts how many houses receive a gift which happens
+# if santa visits the house in an infinite 2D grid
 # hash keeps track of visited locations
 
 my %houses;
